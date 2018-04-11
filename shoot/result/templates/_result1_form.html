@@ -1,0 +1,30 @@
+
+<div class='card'>
+			<div class = 'h3 text-center  card-header'>
+				Entry | Update
+			</div>
+		
+		{% if instance %}
+			<div class = 'card-header'>
+				<p><strong>Shooter ID :</strong> {{instance.shooter_id}} </p>
+				<p><strong>Competition :</strong> {{instance.competition_id}}</p>
+			</div>
+		{% endif %}
+
+           <form class = 'md-form p-4' method = 'POST'>
+				
+				{% csrf_token %}
+				{% for field in form %}
+						<div class='text-muted'>
+						{{field.label}}
+						</div>
+						<div class='form-inline'>
+							{{field}}	
+						</div>
+					
+				{% endfor %}
+
+				<input class='btn btn-indigo'  type="submit" value="Submit">	
+			</form>
+</div>
+	

@@ -1,0 +1,4 @@
+{% for players in player_list %}
+	<p>{{players.code}}  --  {{players.name}}  --  {{players.last_name}}  -- {{players.birth_date}} -- <a href="{% url 'player-update' players.pk %}">Update</a></p>
+
+{% endfor %}

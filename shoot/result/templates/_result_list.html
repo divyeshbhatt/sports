@@ -1,0 +1,41 @@
+
+<div class='card mt-2'>
+			
+			<div class='p-3'>
+				<form class='md-form'>
+					<input id="myInput" type="text" placeholder="Search..">
+				</form>
+			</div>
+	<div class="table-wrapper-2 p-1">
+	  	<table class='table table-sm table-striped'>
+			<thead>
+			<tr>
+				<th>ID</th>
+				{# <th>Competition ID</th> #}
+				<th>Match ID</th>
+				<th>Match Detail</th>
+				<th>Targets</th>
+				<th>Fees</th>
+
+			</tr>
+			</thead>
+			<tbody id='myTable'>
+				{% for result in result_list %}
+				<tr>
+					<td>{{result.competition_id }}</td>
+					<td>{{result.match_id.match_id }}</td>
+					<td>{{result.shooter_id }}</td>
+					<td>{{result.s1 }}</td>
+					<td>{{result.s2 }}</td>
+					<td>{{result.total }}</td>
+					<td><a class='btn btn-sm btn-indigo' href="{% url 'match-add' result.id %}">update</a>
+					 <a class='btn btn-sm btn-indigo' href="{% url 'event-score' result.id %}">Score</a></td>
+				</tr>
+
+				{% endfor %}
+
+			</tbody>
+			
+		</table>
+	</div>
+</div>

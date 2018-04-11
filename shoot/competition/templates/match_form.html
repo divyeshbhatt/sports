@@ -1,0 +1,77 @@
+	{% extends 'base.html' %}
+
+	{% block content %}
+
+	<div class='card'>
+				 <div class = ' h3 text-center  card-header'>
+				Event Details Entry
+				</div>
+
+		
+			<form class = 'md-form p-4' method = 'POST'>
+				
+				{% csrf_token %}
+				{% for field in form %}
+						<div class='text-muted'>
+						{{field.label}}
+						</div>
+						<div class='form-inline'>
+							{{field}}	
+						</div>
+					
+				{% endfor %}
+
+				<input class='btn btn-indigo'  type="submit" value="Submit">	
+			</form>
+		
+	</div>
+	
+	{% endblock %}	
+
+{% block extracontent %}
+	
+	<div class="card">
+ 		  <div class = ' h3 text-center  card-header'>
+			Events
+		</div>
+  
+			<div class='p-3'>
+			<form class='md-form'>
+				<input id="myInput" type="text" placeholder="Search..">
+			</form>
+		</div>
+
+	<div class="table-wrapper-2 p-1">
+	  	<table class='table table-sm table-striped'>
+			<thead>
+			<tr>
+				<th>ID</th>
+				<th>Competition ID</th>
+				<th>Match ID</th>
+				<th>Match Detail</th>
+				<th>Targets</th>
+				<th>Fees</th>
+
+			</tr>
+			</thead>
+			<tbody id='myTable'>
+				{% for matches in match_list %}
+				<tr>
+					<td>{{matches.pk }}</td>
+					<td>{{matches.competition_id.competition_id }}</td>
+					<td>{{matches.match_id }}</td>
+					<td>{{matches.match_detail }}</td>
+					<td>{{matches.targets }}</td>
+					<td>{{matches.fees }}</td>
+					<td><a class='btn btn-sm btn-indigo' href="{% url 'match-update' matches.pk %}">E</a>
+					 <a class='btn btn-sm btn-indigo confirm-delete' href="{% url 'match-delete' matches.pk %}">X</a></td>
+				</tr>
+
+				{% endfor %}
+			</tbody>
+			
+		</table>
+	</div>
+	</div>
+	
+	{% endblock %}	

@@ -1,0 +1,39 @@
+	{% extends 'base.html' %}
+
+	{% block content %}
+
+		{% include '_result1_form.html' %}
+	
+	{% endblock %}	
+
+
+{% block extracontent %}
+	<div class = 'card'>
+			<div class = 'h3 text-center  card-header'>
+				Player Details
+			</div>
+	
+		<div class='p-2'>
+			
+				<div class='float-right'> Player Name :   {{instance.shooter_id}}</div> 
+				<div>Competition ID :  {{instance.competition_id}}</div>
+			
+			<hr>
+			<div class='h6 text-center'> Event ID :  {{instance.match_id}}</div>
+			<p> Scoring : {{instance.s1}} | {{instance.s2}} | {{instance.s3}} | {{instance.s4}} | {{instance.s5}}
+				| {{instance.s6}} | {{instance.s7}} | {{instance.s8}} | {{instance.s9}} | {{instance.s10}}</p>
+			<p> Scoring : {{instance.s11}} | {{instance.s12}} | {{instance.s13}} | {{instance.s14}} | {{instance.s15}}
+				| {{instance.s16}} | {{instance.s17}} | {{instance.s18}} | {{instance.s19}} | {{instance.s20}}</p>
+			<p> Scoring : {{instance.s21}} | {{instance.s22}} | {{instance.s23}} | {{instance.s24}} | {{instance.s25}}
+				| {{instance.s26}} | {{instance.s27}} | {{instance.s28}} | {{instance.s29}} | {{instance.s30}}</p>
+			<p> Scoring : {{instance.s31}} | {{instance.s32}} | {{instance.s33}} | {{instance.s34}} | {{instance.s35}}
+				| {{instance.s36}} | {{instance.s37}} | {{instance.s38}} | {{instance.s39}} | {{instance.s40}}</p>
+			<p> Total : {{instance.total}}</p>
+		</div>
+		
+	</div>
+	
+ 		 {% include '_result_list.html' %}
+	
+	
+	{% endblock %}	

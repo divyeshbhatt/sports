@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+	
+			<div class='card animated fadeInLeft'>
+			<div class = 'h3 text-center  card-header'>
+				Entry | Update
+				
+			</div>
+
+
+			<form class = 'md-form p-4' method = 'POST'>
+				
+				{% csrf_token %}
+				{% for field in form %}
+						<div class='text-muted'>
+						{{field.label}}
+						</div>
+						<div class='form-inline'>
+							{{field}}	
+						</div>
+					
+				{% endfor %}
+
+				<input class='btn btn-indigo'  type="submit" value="Submit">	
+			</form>
+			</div>
+		
+{% endblock %}
+
+
+
+{% block extracontent %}
+
+<div class='card'>
+	<div class = ' h3 text-center  card-header'>
+		Players
+	</div>
+
+	<div class='p-3'>
+		<form method=''>
+		<input id="myInput" type="text" placeholder="Search..">
+		</form>
+	</div>
+
+<div class="table-wrapper-2 p-1">
+	<table class='table table-sm table-striped'>
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>shooterID</th>
+			<th>Name</th>
+			<th>Last Name</th>
+			<th>BirthDate</th>
+			<th></th>
+			<th></th>
+
+		</tr>
+		</thead>
+		<tbody id='myTable'>
+				{% for player in player_list %}
+			<tr>
+				<td>{{player.pk }}</td>
+				<td>{{player.code }}</td>
+				<td>{{player.name }}</td>
+				<td>{{player.last_name }}</td>
+				<td>{{player.birth_date }}</td>
+				<td><a class='btn btn-sm btn-indigo' href="{% url 'player-update' player.pk %}">Update</i></a></td>
+				 <td><a class='btn btn-sm btn-indigo confirm-delete' href="{% url 'player-delete' player.pk %}">Delete</a></td>
+			</tr>
+
+			{% endfor %}
+		</tbody>
+		
+	</table>
+</div>
+</div>
+
+
+{% endblock %}
+	

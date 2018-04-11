@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block login %}
+
+
+
+
+	<div class='card-block text-center'>
+		
+
+			<form class='form-group mt-4 p-4' method='post'>
+				{% csrf_token %}
+				<p class="h4 text-center mb-4">Registration Form</p>
+				
+				<div>
+				
+				{% for hidden in form.hidden_fields %}
+			                {{ hidden }}
+			            {% endfor %}
+
+			          <div>
+
+			            {% for field in form.visible_fields %}
+			                {{ field.errors }}
+			                {{ field.help_text }}
+			                <p>{{ field }}</p>
+			            {% endfor %}
+			        </div>
+			     </div>
+
+				
+				<div class="text-center mt-4">
+			        <button class="btn btn-default" type="submit">Login</button>
+			    </div>
+			</form>
+	</div>
+            
+
+{% endblock %}
